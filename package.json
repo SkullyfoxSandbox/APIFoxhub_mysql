@@ -8,7 +8,6 @@
     "setup": "node ./tools/script/setup.js",
     "postsetup": "npm run create:db && knex migrate:latest",
     "create:db": "node ./tools/script/createDB.js"
-
   },
   "keywords": [],
   "author": "",
@@ -17,7 +16,10 @@
     "prompt": "^1.0.0"
   },
   "dependencies": {
+    "bookshelf": "^0.13.3",
+    "bookshelf-bcrypt": "^3.0.2",
     "dotenv": "^6.1.0",
+    "express": "^4.16.4",
     "knex": "^0.15.2",
     "mysql": "^2.16.0"
   }
