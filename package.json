@@ -1,0 +1,24 @@
+{
+  "name": "APIFoxhub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "presetup": "npm i",
+    "setup": "node ./tools/script/setup.js",
+    "postsetup": "npm run create:db && knex migrate:latest",
+    "create:db": "node ./tools/script/createDB.js"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prompt": "^1.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "knex": "^0.15.2",
+    "mysql": "^2.16.0"
+  }
+}
