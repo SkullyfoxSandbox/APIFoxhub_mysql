@@ -1,22 +1,11 @@
-const User = require('./user.model.js');
+import UserController from './user.controller.js';
 
-class UserController {
-    constructor(){
-        this.model = User;
-    }
+module.exports = (privateRouter, publicRouter) => {
+    privateRouter.get('/users', (req, res, next) =>
+        UserController.getAll()
+    );
 
-    async getAll(){
-        const users = await this.model
-            .forge()
-            .fetchAll();
-
-        return users.toJSON();
-    }
-
-    async create(data) {
-      const user = await this.model.forge(data).save();
-      return user.toJSON();
-    }
-}
-
-module.exports = new UserController();
+    publicRouter.post('/user', (req, res, next) =>
+        UserController.create(req.body)
+    );
+};

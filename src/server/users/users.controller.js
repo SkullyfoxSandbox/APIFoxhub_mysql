@@ -1,16 +1,25 @@
-const ctrl = require('./user.controller.js');
-const handler = require('./../_controllerHandler.js');
+const User = require('./user.model.js');
 
-module.exports = (privateRouter, publicRouter) => {
-    privateRouter.get('/users', (req, res, next) =>
-        handler(ctrl.findAll, [req.query])(req, res, next)
-    );
+class UserController {
+    constructor(){
+        this.model = User;
+    }
 
-    publicRouter.post('/users', (req, res, next) =>
-        handler(ctrl.create, [req.body])(req, res, next)
-    );
+    async getAll(){
+        const users = await this.model
+            .forge()
+            .fetchAll();
 
-    privateRouter.get('/users/:id', (req, res, next) =>
-        handler(ctrl.findById, [req.params.id, req.query])(req, res, next)
-    );
-};
+        return users.toJSON();
+    }
+
+    async create(data) {
+        const user = await this.model
+          .forge(data)
+          .save();
+
+        return user.toJSON();
+    }
+}
+
+module.exports = new UserController();
