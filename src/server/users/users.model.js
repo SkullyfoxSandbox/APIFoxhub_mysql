@@ -14,4 +14,4 @@ const User = Bookshelf.Model.extend({
     */
 });
 
-module.exports = new Model(User, 'User');
+module.exports = new User(User, 'User');

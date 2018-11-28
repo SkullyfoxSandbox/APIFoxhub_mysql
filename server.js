@@ -2,6 +2,11 @@
 *   Author Skullyfox <Skullyfox.yt@gmail.com>
 */
 
+
+require('dotenv').config({
+    path: 'config/.env'
+});
+
 /*  =============================================================================
     Dependencies
     ============================================================================= */
@@ -26,9 +31,12 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+console.log('Server ready! on http://localhost:'+process.env.PORT);
+
 /*  =============================================================================
     Routes config
     ============================================================================= */
-require('./src/server/routes')(app);
+require('./src/server/routes/index.js')(app);
 
-module.exports = http;
+
+http.listen(process.env.PORT);

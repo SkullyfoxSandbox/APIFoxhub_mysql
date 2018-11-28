@@ -1,11 +1,11 @@
-import UserController from './users.controller.js';
+const UserController = require('./users.controller.js');
 
-module.exports = (privateRouter, publicRouter) => {
-    privateRouter.get('/users', (req, res, next) =>
+module.exports = (app) => {
+    app.get('/users', (req, res, next) =>
         UserController.getAll()
     );
 
-    publicRouter.post('/user', (req, res, next) =>
+    app.post('/user', (req, res, next) =>
         UserController.create(req.body)
     );
 };
