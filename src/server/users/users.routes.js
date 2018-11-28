@@ -1,4 +1,4 @@
-import UserController from './user.controller.js';
+import UserController from './users.controller.js';
 
 module.exports = (privateRouter, publicRouter) => {
     privateRouter.get('/users', (req, res, next) =>
